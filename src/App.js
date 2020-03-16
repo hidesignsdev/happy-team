@@ -4,7 +4,7 @@ import {Provider,connect} from 'react-redux';
 import {createStore} from 'redux';
 
 
-
+//
 const action=()=>{
   return {
     type: 'Click',
@@ -15,6 +15,7 @@ const action=()=>{
   }
 }
 
+//Perform an action 'Click' and return a new state
 const reducer =(state,action)=>{
   switch(action.type){
     case 'Click':
@@ -26,7 +27,11 @@ const reducer =(state,action)=>{
       default : return state;
   }
 }
-const store=createStore(reducer);
+
+//store storage of a reducer
+const store = createStore(reducer);
+
+
 const mapStateToProps=(state)=>{
   return state;
 }
@@ -37,7 +42,7 @@ const mapDispatchToProps =(dispatch)=>{
     }
   }
 }
-const Contain=connect(mapStateToProps, mapDispatchToProps)(RandomQuote);
+const Contain = connect(mapStateToProps, mapDispatchToProps)(RandomQuote);
 class App extends Component {
   constructor(props) {
     super(props)
