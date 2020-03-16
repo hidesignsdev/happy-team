@@ -103,10 +103,10 @@ class RandomQuote extends Component {
                 <div style={{ backgroundColor: this.state.color } }  id='quote-box'>
                     <div  id='text'><p>{this.state.quote}</p></div>
                     <div  id='author'><h5>_ {this.state.author} _</h5></div>
-                    <a  href={`https://twitter.com/intent/tweet?text=${this.state.quote} ${this.state.author}`} target='_blank' title="Post this quote on twitter!">
-               <button className="tweet-qoute" id='tweet-quote'> Twitter</button>
+                    <a id='tweet-quote' href={`https://twitter.com/intent/tweet?text=${this.state.quote} ${this.state.author}`} target='_blank' title="Post this quote on twitter!">
+               <button className="tweet-qoute" > Twitter</button>
                     </a>
-                    <button className="next-quote"  onClick={this.nextQuote}>Next Quote</button>
+                    <button id='new-quote' className="next-quote"  onClick={this.nextQuote}>Next Quote</button>
                    
                 </div>
             </div>
