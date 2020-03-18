@@ -19,6 +19,7 @@ body {
   background: black;
   width: 320px; 
   position: relative;
+  margin: 50px auto;
 }
 
 .formulaScreen {
@@ -61,6 +62,11 @@ button {
 
 .jumbo {
   width: 160px;
+  
+}
+.jumbo1 {
+  background-color: rgb(179, 64, 64);
+  width: 240px;
 }
 
 .author {
@@ -71,5 +77,27 @@ button {
     text-decoration: none;
     color: #00264d;
     line-height: 26px;
+  }
+}
+.equalStyle {
+  background-color: yellowgreen;
+};
+.title{
+ font-size: 25px;
+  margin-bottom: 50px;
+  margin-top: 100px;
+}
+.display{
+  height: 50px;
+  .equation{
+    color: white;
+    height: 20px;
+    text-align: right;
+  }
+  .result{
+    margin-top: 5px;
+    height: 20px;
+    text-align: right;
+    color: white;
   }
 }
