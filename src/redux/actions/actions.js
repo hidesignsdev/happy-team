@@ -1,4 +1,4 @@
-import {ADD,SUBTRACT,DIVIDE,MULTIPLY,INPUT_NUMBER,INPUT_DECIMAL,CLEAR_ALL,EQUAL} from './constants'
+import {ADD,SUBTRACT,DIVIDE,MULTIPLY,INPUT_NUMBER,INPUT_DECIMAL,CLEAR_ALL,EQUAL, CLEAR_ITEM} from './constants'
 
 export const add = () => {
     return {
@@ -39,6 +39,12 @@ export const decimal = () => {
 export const clear = () => {
     return {
         type: CLEAR_ALL
+    }
+}
+
+export const clearItem = ()=>{
+    return {
+        type:CLEAR_ITEM
     }
 }
 

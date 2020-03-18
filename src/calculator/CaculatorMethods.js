@@ -60,7 +60,7 @@ class CalculatorMethods {
         register.push(currentValue)
 
         expression = register.join(' ')
-
+      // eslint-disable-next-line
         result = eval(expression)
         currentValue = result.toString()
         register = []
@@ -86,6 +86,13 @@ class CalculatorMethods {
             currentValue += number
         }
     }
+    clearItem(){
+        if(currentValue===''){
+            return
+        }
+    currentValue=currentValue.substr(0,currentValue.length-1)
+    expression=expression.substr(expression.length-2,expression.length-1)
+}
 
     clearAll() {
         currentValue = '0'

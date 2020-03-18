@@ -1,4 +1,4 @@
-import {ADD,SUBTRACT,MULTIPLY,DIVIDE,INPUT_NUMBER,INPUT_DECIMAL,EQUAL,CLEAR_ALL} from '../actions/constants'
+import {ADD,SUBTRACT,MULTIPLY,DIVIDE,INPUT_NUMBER,INPUT_DECIMAL,EQUAL,CLEAR_ALL,CLEAR_ITEM} from '../actions/constants'
 import CalculatorMethods from '../../calculator/CaculatorMethods'
 
 const initialState = {
@@ -63,6 +63,13 @@ const calculatorReducer = (state = initialState, action) => {
                     value: calculator.getValue(),
                     expression: calculator.getExpression().toString()
                 }
+        case CLEAR_ITEM:
+            calculator.clearItem()
+            return{
+                ...state,
+                value:calculator.getValue()
+            }
+
 
         case EQUAL:
             calculator.equals()
