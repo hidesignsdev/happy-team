@@ -13,7 +13,7 @@ class RandomQuotes extends Component {
   componentDidMount() {
     this.props.fetchQuotes();
     this.getNewQuote();
-    console.log(this.props);
+   // console.log(this.props);
   }
 
   getNewQuote() {
@@ -55,6 +55,7 @@ class RandomQuotes extends Component {
               className="button"
               id="new-quote"
               onClick={this.getNewQuote}
+              
               style={{ backgroundColor: randomColor }}
             >
               NEW QUOTE
