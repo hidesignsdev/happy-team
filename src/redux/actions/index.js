@@ -19,7 +19,7 @@ export const fetchQuotes = () => dispatch => {
     .then(data => {
       //   this.setState({ loading: false, error: false, posts: data });
       dispatch({ type: FETCH_QUOTES, payload: data.quotes });
-      //console.log(data)
+      console.log(data)
     })
     .catch(error => {
       console.log(error);
