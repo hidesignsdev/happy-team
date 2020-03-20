@@ -1,24 +1,12 @@
-import { FETCH_QUOTES, NEW_QUOTE } from '../actions/constants';
+import { FETCH_QUOTES, NEW_QUOTE ,COLOR} from '../actions/constants';
 
 const initialState = {
   loading: true,
   error: false,
   data: [],
   randomNumber: '',
-  colors: [
-    '#16a085',
-    '#27ae60',
-    '#2c3e50',
-    '#E6C084',
-    '#DA9088',
-    '#9b59b6',
-    '#FB6964',
-    '#342224',
-    '#472E32',
-    '#BDBB99',
-    '#77B1A9',
-    '#73A857',
-  ],
+  colors: COLOR
+  
 };
 
 export default function(state = initialState, action) {

@@ -13,7 +13,7 @@ class RandomQuotes extends Component {
   componentDidMount() {
     this.props.fetchQuotes();
     this.getNewQuote();
-   // console.log(this.props);
+
   }
 
   getNewQuote() {
