@@ -6,7 +6,7 @@ class App extends Component {
   handleSubmit = e => {
     e.preventDefault();
     const username = this.getUsername.value;
-    this.props.dispatch(fetchGithubInfo(username));
+    this.props.fetchGithubInfo(username);
     this.getUsername.value = "";
   }
   render() {
@@ -39,5 +39,10 @@ const mapStateToProps = state => {
     data: state
   };
 };
-export default connect(mapStateToProps)(App);
+const mapDispatchToProps = dispatch =>{
+  return {
+    fetchGithubInfo:(username) =>dispatch(fetchGithubInfo(username))
+  }
+}
+export default connect(mapStateToProps,mapDispatchToProps)(App);
 

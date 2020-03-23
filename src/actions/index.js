@@ -5,10 +5,10 @@ export const getGithubInfo = () => ({
     type: FETCH_GITHUB_INFO
 })
 
-export const fetchGithubInfoSuccess = post => {
+export const fetchGithubInfoSuccess = data => {
     return {
         type: FETCH_GITHUB_INFO_SUCCESS,
-        data: post,
+        payload: data,
     }
 }
 
@@ -22,12 +22,12 @@ export const fetchGithubInfo = username => {
     store.dispatch(getGithubInfo());
     return function (dispatch) {
         return fetch(`https://api.github.com/users/${user}`)
-            .then(data => data.json())
-            .then(data => {
-                if (data.message === "Not Found") {
+            .then(payload => payload.json())
+            .then(payload => {
+                if (payload.message === "Not Found") {
 
                     throw new Error("No such user found!!");
-                } else dispatch(fetchGithubInfoSuccess(data));
+                } else dispatch(fetchGithubInfoSuccess(payload));
             })
             .catch(err => dispatch(fetchGithubInfoFailure()));
 

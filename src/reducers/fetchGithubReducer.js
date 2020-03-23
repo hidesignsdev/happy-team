@@ -7,26 +7,26 @@ const initialState = {
 export const fetchGithubReducer = (state = initialState, action) => {
     switch (action.type) {
         case FETCH_GITHUB_INFO:
-            return Object.assign({}, state,{
-                
+            return {
+                ...state,
                 userData: {},
                 loading: true,
-                error:false
-            })
+                error: false
+            }
         case FETCH_GITHUB_INFO_SUCCESS: {
-            return Object.assign({}, state,{
-               
+            return {
+                ...state,
                 loading: false,
-                userData: action.data,
-                error:false
-            })
+                userData: action.payload,
+                error: false
+            }
         }
         case FETCH_GITHUB_INFO_FAILURE: {
-            return Object.assign({}, state,{
-                
+            return {
+                ...state,
                 loading: false,
                 error: true
-            })
+            }
         }
         default:
             return state;
