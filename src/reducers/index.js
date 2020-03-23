@@ -1,7 +1,8 @@
-import { combineReducers } from 'redux';
-import fetchGithubReducer from './fetchGithubReducer';
+// import { combineReducers } from 'redux';
+// import fetchGithubReducer from './fetchGithubReducer';
 
-export default combineReducers({
-  githubFetch:fetchGithubReducer
- 
-});
+// const rootReducer = combineReducers({
+//   githubFetch: fetchGithubReducer
+
+// });
+// export default rootReducer
