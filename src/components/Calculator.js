@@ -8,7 +8,7 @@ import { clearAction, numberAction, operatorAction, decimalAction, calculateActi
 
 
 class Calculator extends Component {
-   
+
     render() {
         return (
             <div >
@@ -55,24 +55,24 @@ const mapStateToProps = (state) => {
         calculator: state.calculator
     }
 }
-const mapDispatchToProps = (dispatch, ownProps) => {
+const mapDispatchToProps = (dispatch) => {
     return {
         handleNumberInput: (e) => {
             dispatch(numberAction(e.currentTarget.value))
         },
-        
+
         handleOperatorInput: (e) => {
             dispatch(operatorAction(e.currentTarget.value))
         },
-        handleDecimalIput:(e)=>{
+        handleDecimalInput: (e) => {
             dispatch(decimalAction(e.currentTarget.value))
         },
-        handleCalculate:(e)=>{
+        handleCalculate: (e) => {
             dispatch(calculateAction(e.currentTarget.value));
         },
-        handleClear:(e)=>{
+        handleClear: (e) => {
             dispatch(clearAction(e.currentTarget.value))
         }
     }
 }
-export default connect(mapStateToProps,mapDispatchToProps)(Calculator)
+export default connect(mapStateToProps, mapDispatchToProps)(Calculator)

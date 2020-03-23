@@ -13,20 +13,20 @@ export const clearAction = () => {
 export const numberAction = (number) => {
     return {
         type: NUMBER_INPUT,
-        number
+        payload : number
     }
 }
 
 export const operatorAction = (operator) => {
     return {
         type: OPERATOR,
-        operator
+        payload: operator
     }
 }
 export const decimalAction = (decimal) => {
     return {
         type: DECIMAL,
-        decimal
+        payload : decimal
     }
 }
 export const calculateAction = () => {
