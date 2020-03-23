@@ -8,6 +8,7 @@ export default function (state=initialState,action){
         case FETCH_GITHUB_INFO:
              return{
                  ...state,
+                 loading:false,
                  data:action.payload
              };
         default:
