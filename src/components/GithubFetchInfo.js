@@ -27,6 +27,7 @@ class GithubFetchInfo extends Component {
     render() {
         let githubAccount = this.props.data
         let loading = this.props.loading
+        let fetchFailure=this.props.fetchError
         console.log('account detail:', githubAccount);
 
         return (
@@ -51,11 +52,11 @@ class GithubFetchInfo extends Component {
                     <div className="col-2 center">
                         <i className="fas fa-arrow-circle-right"></i>
                     </div>
-
+                    
                     {!isEmpty(githubAccount) ?
 
                         <div className="col-6">
-                            <div className="card-deck mt-4">
+                            <div className="card-deck mt-4 border">
                                 <img className="card-img-top" src={githubAccount.avatar_url} alt="avartar" />
                                 <div className="card-body">
                                     <h4 className="card-title">{githubAccount.name}</h4>
@@ -70,10 +71,10 @@ class GithubFetchInfo extends Component {
                                 </div>
                             </div>
                         </div>
-                        : <div className="mt-4">
-                            <label >The result of fetching :</label>
-                            <p>No data found </p>
-                        </div>}
+                        :  fetchFailure? <h3 className="center mt-3">User not found</h3>:
+                        <div className="result">The result will appear hear:</div>
+                        
+                        }
 
 
                 </div>
@@ -86,7 +87,8 @@ class GithubFetchInfo extends Component {
 const mapStateToProps = (state, ownProps) => {
     return {
         data: state.githubFetch.data,
-        loading: state.githubFetch.loading
+        loading: state.githubFetch.loading,
+        fetchError:state.githubFetch.error
     }
 }
 const mapDispatchToProps = (dispatch, ownProps) => ({

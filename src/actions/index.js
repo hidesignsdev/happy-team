@@ -1,4 +1,4 @@
-import {FETCH_GITHUB_INFO, CLEAR_DATA, LOADING} from './constants'
+import {FETCH_GITHUB_INFO, CLEAR_DATA, LOADING, FETCH_ERROR} from './constants'
 export const fetchGithubInfo=(data)=>({
     type:FETCH_GITHUB_INFO,
     payload:data
@@ -6,7 +6,9 @@ export const fetchGithubInfo=(data)=>({
 export const loading =()=>({
     type:LOADING
 })
-
+export const fetchError = ()=>({
+    type:FETCH_ERROR
+})
 export const fetchGithubAcc=(username)=>dispatch =>{
     dispatch(loading());
     fetch(
@@ -18,11 +20,11 @@ export const fetchGithubAcc=(username)=>dispatch =>{
             }
             return response.json();
           })
-    .then(data=>{
+       .then(data => {
         dispatch(fetchGithubInfo(data));
         
     })
-    .catch(error=>{});
+    .catch(error=>dispatch(fetchError()));
     
     
 }
