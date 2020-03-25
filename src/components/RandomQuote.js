@@ -7,21 +7,13 @@ import quotes from '../quotes.json'
 
 class RandomQuote extends Component {
     componentDidMount() {
-        this.props.dispatch(newQuote(this.getQuote()))
+        this.props.nextQuote(this.getQuote())
     }
     getQuote() {
         return quotes[Math.floor(Math.random() * quotes.length)]
-        // let color = ['red', 'brown', 'Azure', 'orange', 'green', 'Aquamarine', 'pink'] 
-        // let colorNum = Math.floor(Math.random() * 7) // get random color    
-        // // console.log(color[colorNum])
-        // this.setState({
-        //     quote: randomQuote['quote'],
-        //     author: randomQuote['author'],
-        //     color: color[colorNum]
-        // })
     }
     nextQuote = () => {
-        this.props.dispatch(newQuote(this.getQuote()))
+        this.props.nextQuote(this.getQuote())
     }
 
     render() {
@@ -45,8 +37,13 @@ class RandomQuote extends Component {
 }
 const mapStateToProps = (state) => {
     return {
-        quote: state.newQuote
+        quote: state.NewQuoteReducer
+    }
+}
+const mapDispatchToProps = (dispatch)=>{
+    return{
+        nextQuote:(getQuote)=>{dispatch(newQuote(getQuote))}
     }
 }
 
-export default connect(mapStateToProps)(RandomQuote)
+export default connect(mapStateToProps,mapDispatchToProps)(RandomQuote)

@@ -2,6 +2,6 @@ import { combineReducers } from 'redux'
 import NewQuoteReducer from './newQuoteReducer'
 
 const rootReducer = combineReducers({
-    newQuote: NewQuoteReducer
+   NewQuoteReducer
 });
 export default rootReducer;
