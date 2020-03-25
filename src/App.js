@@ -12,7 +12,6 @@ class App extends Component {
     this.getUsername.value = "";
   }
   render() {
-    console.log(this.props.data)
     return (
       <div className="container">
         <form onSubmit={this.handleSubmit} className="form">
