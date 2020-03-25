@@ -1,4 +1,4 @@
-import { FETCH_GITHUB_INFO, FETCH_GITHUB_INFO_SUCCESS, FETCH_GITHUB_INFO_FAILURE } from '../actions/constants'
+import { FETCH_GITHUB_INFO, FETCH_GITHUB_INFO_SUCCESS, FETCH_GITHUB_INFO_FAILURE, CLEAR_INFO } from '../actions/constants'
 const initialState = {
     userData: {},
     loading: false,
@@ -26,6 +26,13 @@ export const fetchGithubReducer = (state = initialState, action) => {
                 ...state,
                 loading: false,
                 error: true
+            }
+        }
+        case CLEAR_INFO: {
+            return {
+                userData: {},
+                loading: false,
+                error: false
             }
         }
         default:
