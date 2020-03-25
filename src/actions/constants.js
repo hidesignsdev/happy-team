@@ -1,2 +1,3 @@
 export const FETCH_GITHUB_INFO='FETCH_GITHUB_INFO' 
-
+export const CLEAR_DATA='CLEAR-DATA'
+export const LOADING='LOADING'
