@@ -24,7 +24,7 @@ export const fetchGithubAcc=(username)=>dispatch =>{
         dispatch(fetchGithubInfo(data));
         
     })
-    .catch(error=>dispatch(fetchError()));
+    .catch( error =>dispatch(fetchError()));
     
     
 }

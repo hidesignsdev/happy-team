@@ -28,7 +28,7 @@ class GithubFetchInfo extends Component {
         let githubAccount = this.props.data
         let loading = this.props.loading
         let fetchFailure=this.props.fetchError
-        console.log('account detail:', githubAccount);
+    
 
         return (
             <div className="container">
