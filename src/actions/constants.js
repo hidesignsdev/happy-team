@@ -1,0 +1,5 @@
+export const REQUEST_API_DATA = 'REQUEST_API_DATA'
+export const FETCH_SUCCESS='FETCH_SUCCESS' 
+export const CLEAR_DATA='CLEAR-DATA'
+export const LOADING='LOADING'
+export const FETCH_ERROR='FETCH_ERROR'
