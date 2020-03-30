@@ -26,7 +26,7 @@ class App extends Component {
           <button className="buttonfetch">Fetch</button>
         </form>
         {this.props.data.loading ? <h3>Loading...</h3> : null}
-        {this.props.data.error ? <h3 >No such User exists.</h3> : null}
+        {this.props.data.error ? <h3 >No such User exists.!</h3> : null}
         {Object.keys(this.props.data.userData).length > 0 ? (
           <UserInfo click={this.props.clearInfo} user={this.props.data.userData.data} />
         ) : null}
