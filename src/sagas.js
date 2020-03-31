@@ -6,16 +6,19 @@ import {
 import {
     REQUEST_API_DATA
 } from "./actions/constants";
-import { call, put, takeLatest } from "redux-saga/effects";
-
+import { call, put, takeLeading } from "redux-saga/effects";
 
 
 async function fetchGithubData(username) {
-
-    const response = await fetch(`https://api.github.com/users/${username}`);
-    const data = await response.json()
-    return data
-
+    try {
+        const response = await fetch(`https://api.github.com/users/${username}`);
+        const data = await response.json()
+        return data
+    }
+    catch (err) {
+        // console.log('4',err)
+        throw new err()
+    };
 }
 
 
@@ -23,13 +26,18 @@ function* getApiData(action) {
     try {
         yield (put(loading()));
         const data = yield call(fetchGithubData, action.payload.username);
-        yield put(fetchSuccess(data));
+        //console.log('5',data)
+        if (data.message === "Not Found") {
+            yield put(fetchError())
+        }
+        else {
+            yield put(fetchSuccess(data));
+        }
     }
     catch (error) {
-        yield put(fetchError())
-
+        console.log(error);
     }
 }
 export default function* mySaga() {
-    yield takeLatest(REQUEST_API_DATA, getApiData)
+    yield takeLeading(REQUEST_API_DATA, getApiData)
 }

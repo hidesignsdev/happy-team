@@ -23,6 +23,7 @@ export default function (state = initialState, action) {
         case FETCH_ERROR:
             return {
                 ...state,
+                data:{},
                 loading: false,
                 error: true
             }

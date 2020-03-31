@@ -1,4 +1,4 @@
- import React, { Component } from 'react';
+import React, { Component } from 'react';
 import { requestApiData, clearData } from '../actions';
 import { connect } from 'react-redux'
 import { isEmpty } from 'lodash'
@@ -27,8 +27,9 @@ class GithubFetchInfo extends Component {
     render() {
         let githubAccount = this.props.data
         let loading = this.props.loading
-        let fetchFailure=this.props.fetchError
-    
+        let fetchFailure = this.props.fetchError
+        //console.log('error:',fetchFailure)
+
 
         return (
             <div className="container">
@@ -42,17 +43,17 @@ class GithubFetchInfo extends Component {
                         <button className="btn btn-block btn-dark" onClick={this.handleFetch}>Fetch</button>
                         <br />
                         {
-                        loading ?
-                            <div className="center">
-                                <div className="loader mt-3 ">
-                                </div>
-                        </div> : null
+                            loading ?
+                                <div className="center">
+                                    <div className="loader mt-3 ">
+                                    </div>
+                                </div> : null
                         }
                     </div>
                     <div className="col-2 center">
                         <i className="fas fa-arrow-circle-right"></i>
                     </div>
-                    
+
                     {!isEmpty(githubAccount) ?
 
                         <div className="col-6">
@@ -71,10 +72,10 @@ class GithubFetchInfo extends Component {
                                 </div>
                             </div>
                         </div>
-                        :  fetchFailure? <h3 className="center mt-3">User not found</h3>:
-                        <div className="result">The result will appear hear:</div>
-                        
-                        }
+                        : fetchFailure ? <h3 className="center mt-3">User not found</h3> :
+                            <div className="result">The result will appear hear:</div>
+
+                    }
 
                 </div>
 
@@ -87,7 +88,7 @@ const mapStateToProps = (state, ownProps) => {
     return {
         data: state.githubFetch.data,
         loading: state.githubFetch.loading,
-        fetchError:state.githubFetch.error
+        fetchError: state.githubFetch.error
     }
 }
 const mapDispatchToProps = (dispatch) => ({
