@@ -22,7 +22,6 @@ function* getGithubInfo(action) {
     }
 }
 
-function* rootSaga() {
+export default function* watchDataSaga() {
     yield takeEvery(FETCH_GITHUB_INFO, getGithubInfo)
 }
-export default rootSaga 

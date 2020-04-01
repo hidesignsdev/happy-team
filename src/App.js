@@ -36,7 +36,7 @@ class App extends Component {
 }
 const mapStateToProps = (state) => {
   return {
-    data: state
+    data: state.dataReducer
   };
 };
 const mapDispatchToProps = (dispatch) => {
