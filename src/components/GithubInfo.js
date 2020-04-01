@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 import { requestApiData, clearData } from '../actions';
 import { connect } from 'react-redux'
 import { isEmpty } from 'lodash'
-import '../../src/App.css'
+import '../style/App.css'
 
 
-class GithubFetchInfo extends Component {
+class GithubInfo extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -96,4 +96,4 @@ const mapDispatchToProps = (dispatch) => ({
     fetchingGithubInfo: (username) => dispatch(requestApiData(username)),
     clearData: () => dispatch(clearData())
 })
-export default connect(mapStateToProps, mapDispatchToProps)(GithubFetchInfo)
+export default connect(mapStateToProps, mapDispatchToProps)(GithubInfo)

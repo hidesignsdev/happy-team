@@ -1,8 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './components/App';
+import './style/index.css';
+import App from './containers/App';
 import * as serviceWorker from './serviceWorker';
+import  sagaMiddleware  from './store'
+import rootSaga from './sagas/githubInfoSaga'
 
 ReactDOM.render(
   <React.StrictMode>
@@ -10,7 +12,7 @@ ReactDOM.render(
   </React.StrictMode>,
   document.getElementById('root')
 );
-
+sagaMiddleware.run(rootSaga);
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
 // Learn more about service workers: https://bit.ly/CRA-PWA

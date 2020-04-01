@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
-import fetchGithubReducer from './fetchGithubReducer';
+import fetchGithubReducer from './githubInfoReducer';
 
 export default combineReducers({
   githubFetch:fetchGithubReducer

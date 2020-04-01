@@ -9,9 +9,7 @@ export default function (state = initialState, action) {
         case LOADING:
             return {
                 ...state,
-                data: {},
                 loading: true,
-                error: false
             }
         case FETCH_SUCCESS:
             return {
