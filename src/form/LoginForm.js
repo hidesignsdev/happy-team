@@ -1,7 +1,7 @@
 import React from 'react'
 import { Field, reduxForm } from 'redux-form'
 import { myInput } from './RenderField'
-import user from '../user.png'
+import user from '../assets/user.png'
 
 
 const LoginForm = (props) => {
