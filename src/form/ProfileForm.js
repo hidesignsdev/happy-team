@@ -27,19 +27,19 @@ const ProfileForm = props => {
                     <div className="container text-center text-md-left">
                         <div className="row">
                             <div className="col-3 ">
-                                <h5 className="font-weight-bold mt-3 mb-4"><i class="fas fa-home"></i></h5>
+                                <h5 className="mt-3 mb-4"><i className="fas fa-home"></i></h5>
                             </div>
 
                             <div className="col-3 ">
-                                <h5 className="font-weight-bold  mt-3 mb-4"><i class="fas fa-user-plus"></i></h5>
+                                <h5 className=" mt-3 mb-4"><i className="fas fa-user-plus"></i></h5>
                             </div>
 
                             <div className="col-3 ">
-                                <h5 className="font-weight-bold  mt-3 mb-4"><i class="fas fa-bell"></i></h5>
+                                <h5 className="  mt-3 mb-4"><i className="fas fa-bell"></i></h5>
                             </div>
 
                             <div className="col-3 ">
-                                <h5 className="font-weight-bold  mt-3 mb-4"><i class="fas fa-user-circle"></i></h5>
+                                <h5 className=" mt-3 mb-4"><i className="fas fa-user-circle"></i></h5>
                             </div>
                         </div>
                     </div>
