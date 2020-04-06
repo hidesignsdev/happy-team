@@ -4,12 +4,13 @@ import LoginPage from './components/LoginPage'
 import SignupPage from './components/SignupPage'
 import PersonalPage from './components/PersonalPage'
 import ProfilePage from './components/ProfilePage'
+import CongratulationsPage from './components/CongratulationsPage'
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 export default class App extends Component {
   render() {
     return (
-      <div className="form-group">
+      <div >
         <Router>
           <Switch>
             <Route exact path="/">
@@ -24,7 +25,8 @@ export default class App extends Component {
             <Route path="/profile">
               <ProfilePage />
             </Route>
-            <Route>
+            <Route path="/congratulations">
+              <CongratulationsPage />
             </Route>
           </Switch>
         </Router>

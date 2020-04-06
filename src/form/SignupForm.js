@@ -31,10 +31,11 @@ const SignUpForm = (props) => {
                     <label>Comfirm your password</label>
                     <Field name="comfirmPassword" type="password" component={myInput} placeholder="Re-enter your password" className="form-control" />
                 </div>
-                <Link to="/signup-final">
-                    <button  type="submit">Sign Up</button>
-                </Link>
-
+                <div className="btn-signup">
+                    <Link to="/signup-final">
+                        <button type="submit">Sign Up</button>
+                    </Link>
+                </div>
                 <div className="link-to-login">
                     <p  >Already have account?<a href="/">log in</a></p>
                 </div>

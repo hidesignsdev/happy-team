@@ -2,10 +2,8 @@ import React from "react";
 import ProfileForm from '../form/ProfileForm';
 
 class ProfilePage extends React.Component {
-
     submit = values => {  
         console.log(values);
-
     }
     render() {
         return (      
@@ -13,5 +11,4 @@ class ProfilePage extends React.Component {
         );
     }
 }
-
 export default ProfilePage

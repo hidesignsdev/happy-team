@@ -2,7 +2,7 @@ import React from 'react'
 import { Field, reduxForm } from 'redux-form'
 import { myInput } from './RenderField'
 import user from '../assets/user.png'
-
+import {Link} from 'react-router-dom'
 
 const PersonalForm = (props) => {
     const { handleSubmit } = props
@@ -27,9 +27,11 @@ const PersonalForm = (props) => {
                     <Field name="password" type="date" component={myInput} placeholder="Enter your password..." />
                 </div>
                 {/* <button className="next-btn" type="submit">Next</button>s */}
-                
-                <button type="button" className="btn btn-primary btn-next">Next</button>
+                <Link to="/congratulations">
+                    <button type="button" className="btn btn-primary btn-next">Next</button>
+                </Link>
             </form>
+
         </div>
     )
 }
