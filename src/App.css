@@ -36,3 +36,23 @@
     transform: rotate(360deg);
   }
 }
+.userPhoto{
+  margin: 100px auto;
+   justify-content: center;
+   width: 100px;
+   height: 100px;
+ }
+ 
+ .container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+}
+form{
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+
+}
