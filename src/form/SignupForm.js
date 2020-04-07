@@ -3,13 +3,14 @@ import { Field, reduxForm } from 'redux-form'
 import { myInput } from './RenderField'
 import user from '../assets/user.png'
 import { Link } from 'react-router-dom'
+import { validate } from '../common/ValidationForm'
 
 const SignUpForm = (props) => {
     const { handleSubmit } = props
     return (
 
         <div className=" center">
-            <img src={user} />
+            <img src={user} alt="userimg"/>
             <form onSubmit={handleSubmit}>
                 <div className="field">
                     <label>First name</label>
@@ -43,4 +44,4 @@ const SignUpForm = (props) => {
         </div>
     )
 }
-export default reduxForm({ form: 'signup' })(SignUpForm)
+export default reduxForm({ form: 'signup',validate })(SignUpForm)

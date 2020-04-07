@@ -9,7 +9,7 @@ const PersonalForm = (props) => {
     return (
 
         <div className=" center">
-            <img src={user} />
+            <img src={user} alt="userPhoto" />
             <form onSubmit={handleSubmit}>
                 <div className="field">
                     <label>Gender</label>
