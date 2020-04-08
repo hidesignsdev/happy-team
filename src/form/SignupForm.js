@@ -2,14 +2,14 @@ import React from 'react'
 import { Field, reduxForm } from 'redux-form'
 import { myInput } from './RenderField'
 import user from '../assets/user.png'
-import { Link } from 'react-router-dom'
+import { validate } from '../common/ValidationForm'
 
 const SignUpForm = (props) => {
     const { handleSubmit } = props
     return (
 
         <div className=" center">
-            <img src={user} />
+            <img src={user} alt="userimg"/>
             <form onSubmit={handleSubmit}>
                 <div className="field">
                     <label>First name</label>
@@ -31,10 +31,8 @@ const SignUpForm = (props) => {
                     <label>Comfirm your password</label>
                     <Field name="comfirmPassword" type="password" component={myInput} placeholder="Re-enter your password" className="form-control" />
                 </div>
-                <div className="btn-signup">
-                    <Link to="/signup-final">
+                <div className="btn-signup">               
                         <button type="submit">Sign Up</button>
-                    </Link>
                 </div>
                 <div className="link-to-login">
                     <p  >Already have account?<a href="/">log in</a></p>
@@ -43,4 +41,4 @@ const SignUpForm = (props) => {
         </div>
     )
 }
-export default reduxForm({ form: 'signup' })(SignUpForm)
+export default reduxForm({ form: 'signup',validate })(SignUpForm)

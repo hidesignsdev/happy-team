@@ -2,19 +2,17 @@ import React from 'react'
 import { Field, reduxForm } from 'redux-form'
 import { myInput } from './RenderField'
 import user from '../assets/user.png'
-import {Link} from 'react-router-dom'
 
 const PersonalForm = (props) => {
     const { handleSubmit } = props
     return (
-
         <div className=" center">
-            <img src={user} />
+            <img src={user} alt="userPhoto" />
             <form onSubmit={handleSubmit}>
                 <div className="field">
                     <label>Gender</label>
                     <div  >
-                        <Field className="select-gender" name="gender" component="select" >
+                        <Field className="select-gender" name="gender" type="select" component="select" >
                             <option />
                             <option value="male">Male</option>
                             <option value="female">Female</option>
@@ -24,15 +22,12 @@ const PersonalForm = (props) => {
                 </div>
                 <div className="field">
                     <label>Birthday</label>
-                    <Field name="password" type="date" component={myInput} placeholder="Enter your password..." />
+                    <Field name="date-of-birth" type="date" component={myInput} />
                 </div>
                 {/* <button className="next-btn" type="submit">Next</button>s */}
-                <Link to="/congratulations">
-                    <button type="button" className="btn btn-primary btn-next">Next</button>
-                </Link>
+                <button type="submit" className="btn btn-primary btn-next">Next</button>
             </form>
-
         </div>
     )
 }
-export default reduxForm({ form: 'login' })(PersonalForm)
+export default reduxForm({ form: 'signup-final' })(PersonalForm)

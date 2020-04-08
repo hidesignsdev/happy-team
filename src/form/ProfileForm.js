@@ -7,7 +7,7 @@ const ProfileForm = (props) => {
         <div>
             <div className=" center">
                 <form onSubmit={handleSubmit}>
-                    <img src={userPhoto} />
+                    <img src={userPhoto} alt="userPhoto"/>
                     <h3 className="yourname" >Park JinYoung</h3>
                     <div className="profile">
                         <div className="view-changepass-profile">
