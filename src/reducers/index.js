@@ -1,18 +1,9 @@
-import { createStore, combineReducers } from 'redux'
-import { reducer as formReducer } from 'redux-form'
+import { combineReducers } from 'redux'
+import { reducer as form } from 'redux-form'
+import signup from '../containers/signup/reducer'
 
 const rootReducer = combineReducers({
-    form: formReducer
+    signup,
+    form,
 })
-const store = createStore(rootReducer,window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
-export default store
-
-
-
-// import { combineReducers } from 'redux'
-// import dataReducer from './sagaReducer'
-
-// const rootReducer = combineReducers({
-//     dataReducer
-// })
-// export default rootReducer
+export default rootReducer

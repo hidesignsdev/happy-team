@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import './App.css';
 import LoginPage from './components/LoginPage'
-import SignupPage from './components/SignupPage'
+import Signup from './containers/signup'
 import PersonalPage from './components/PersonalPage'
 import ProfilePage from './components/ProfilePage'
 import CongratulationsPage from './components/CongratulationsPage'
@@ -21,7 +21,7 @@ export default class App extends Component {
                 <LoginPage history={history} />
               </Route>
               <Route path="/signup">
-                <SignupPage history={history} />
+                <Signup history={history} />
               </Route>
               <Route path="/signup-final">
                 <PersonalPage history={history} />

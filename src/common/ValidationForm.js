@@ -21,10 +21,10 @@ export const validate = values => {
     } else if (values.password.length < 6) {
         errors.password = '* Password must be more than 6 characters'
     }
-    if (!values.comfirmPassword) {
-        errors.comfirmPassword = 'Required';
-    } else if (values.comfirmPassword !== values.password) {
-        errors.comfirmPassword = 'Password mismatched';
+    if (!values.confirmPassword) {
+        errors.confirmPassword = 'Required';
+    } else if (values.confirmPassword !== values.password) {
+        errors.confirmPassword = 'Password mismatched';
     }
     return errors
 }

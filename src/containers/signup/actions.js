@@ -1,13 +1,8 @@
-// import { SIGNUP_REQUESTING, } from './constants'
+import { SIGNUP} from './constants'
 
-// function requestSignup({ firstname, lastname, email, password }) {
-//     return {
-//         type: SIGNUP_REQUESTING,
-//         firstname,
-//         lastname,
-//         email,
-//         password
-//     }
-// }
-
-// export default requestSignup
+export const signUp = (data) => {
+    return {
+        type: SIGNUP,
+        payload: { data }
+    }
+}
