@@ -6,3 +6,13 @@ const rootReducer = combineReducers({
 })
 const store = createStore(rootReducer,window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
 export default store
+
+
+
+// import { combineReducers } from 'redux'
+// import dataReducer from './sagaReducer'
+
+// const rootReducer = combineReducers({
+//     dataReducer
+// })
+// export default rootReducer

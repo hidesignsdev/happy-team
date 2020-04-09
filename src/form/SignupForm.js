@@ -28,8 +28,8 @@ const SignUpForm = (props) => {
                     <Field name="password" type="password" component={myInput} placeholder="Enter your password..." />
                 </div>
                 <div className="field">
-                    <label>Comfirm your password</label>
-                    <Field name="comfirmPassword" type="password" component={myInput} placeholder="Re-enter your password" className="form-control" />
+                    <label>Confirm your password</label>
+                    <Field name="confirmPassword" type="password" component={myInput} placeholder="Re-enter your password" className="form-control" />
                 </div>
                 <div className="btn-signup">               
                         <button type="submit">Sign Up</button>

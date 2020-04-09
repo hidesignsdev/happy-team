@@ -13,9 +13,9 @@ export const logOut = () => {
         type: LOGOUT
     }
 }
-export const signUp = (inforAccount) => {
+export const signUp = (newAccount) => {
     return {
         type: SIGNUP,
-        payload: inforAccount
+        payload: newAccount
     }
 }
