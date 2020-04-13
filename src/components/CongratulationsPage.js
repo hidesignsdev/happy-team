@@ -8,6 +8,7 @@ class Congratulations extends React.Component {
         this.props.history.push("/profile")
     }
     render() {
+     
         return (
             <div className="container">
                 <CongratulationsForm onSubmit={this.submit} />
