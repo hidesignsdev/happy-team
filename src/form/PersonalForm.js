@@ -22,7 +22,7 @@ const PersonalForm = (props) => {
                 </div>
                 <div className="field">
                     <label>Birthday</label>
-                    <Field  name="date-of-birth" type="date" component={myInput} />
+                    <Field  name="dateOfBirth" type="date" component={myInput} />
                 </div>
                 {/* <button className="next-btn" type="submit">Next</button>s */}
                 <button type="submit" className="btn btn-primary btn-next">Next</button>

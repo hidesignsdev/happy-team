@@ -9,12 +9,21 @@ import user from '../../assets/user.png'
 import { validate } from '../../common/ValidationForm'
 
 class Signup extends Component {
+
+    state = {
+        isPasswordShown: false
+    }
+    togglePasswordVisibility = () => {
+        const { isPasswordShown } = this.state;
+        this.setState({ isPasswordShown: !isPasswordShown });
+    }
     submit = values => {
         this.props.signUp(values)
         // console.log(values)
         this.props.history.push("/signup-final")
     }
     render() {
+        const { isPasswordShown } = this.state
         const { handleSubmit } = this.props
         return (
             <div className=" center">
@@ -46,13 +55,18 @@ class Signup extends Component {
                             placeholder="Email..."
                             className="form-control" />
                     </div>
-                    <div className="field">
-                        <label>Password</label>
-                        <Field
-                            name="password"
-                            type="password"
-                            component={myInput}
-                            placeholder="Enter your password..." />
+                    <div className="div-hidden-password">
+                        <div className="field">
+                            <label>Password</label>
+                            <Field
+                                name="password"
+                                type={(isPasswordShown) ? "text" : "password"}
+                                component={myInput}
+                                value={this.state.password}
+                                onChange={this.handlePasswordChange}
+                                placeholder="Enter your password..." />
+                        </div>
+                        <i className="fa fa-eye password-icon" onClick={this.togglePasswordVisibility} />
                     </div>
                     <div className="field">
                         <label>Confirm your password</label>
@@ -62,6 +76,7 @@ class Signup extends Component {
                             component={myInput}
                             placeholder="Re-enter your password"
                             className="form-control" />
+
                     </div>
                     <div className="btn-signup">
                         <button type="submit">Sign Up</button>
