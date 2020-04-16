@@ -9,9 +9,8 @@ import user from '../../assets/user.png'
 import { validate } from '../../common/ValidationForm'
 
 class Signup extends Component {
-
     state = {
-        isPasswordShown: false
+        isPasswordShown: false,
     }
     togglePasswordVisibility = () => {
         const { isPasswordShown } = this.state;
@@ -19,12 +18,14 @@ class Signup extends Component {
     }
     submit = values => {
         this.props.signUp(values)
-        // console.log(values)
-        this.props.history.push("/signup-final")
     }
     render() {
         const { isPasswordShown } = this.state
         const { handleSubmit } = this.props
+        const { loading, success ,error} = this.props.signupForm;
+        if (success === true) {
+            this.props.history.push("/signup-final")
+        }
         return (
             <div className=" center">
                 <img src={user} alt="userimg" />
@@ -79,8 +80,15 @@ class Signup extends Component {
 
                     </div>
                     <div className="btn-signup">
-                        <button type="submit">Sign Up</button>
+                        {loading ? <button className="btn btn-primary" disabled>
+                                  <span className="spinner-grow spinner-grow-sm"></span>
+                                  Loading..
+                                   </button>
+                            :
+                                  <button type="submit" className="btn btn-primary">Sign Up</button>
+                        }
                     </div>
+                    {error?(<span className="alert-danger"><i class="fas fa-exclamation-triangle"></i>{error}</span>) : null}
                     <div className="link-to-login">
                         <p  >Already have account?<a href="/">log in</a></p>
                     </div>
@@ -94,11 +102,18 @@ Signup = reduxForm({
     form: 'signup',
     validate
 })(Signup)
-
+const mapStateToProps = (state, ownProps) => {
+    return {
+        // loading: state.signup.loading,
+        // error:state.signup.error,
+        // success:state.signup.success
+        signupForm: state.signup
+    }
+}
 const mapDispatchToProps = (dispatch) => {
     return {
         signUp: (values) => dispatch(signUp(values))
     }
 }
 
-export default connect(null, mapDispatchToProps)(withRouter(Signup));
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(Signup));
