@@ -13,13 +13,11 @@ class Profile extends Component {
         localStorage.removeItem('username')
     }
     render() {
-        const { data } = this.props.loginReducer;
-        console.log("data?????>",data)
+        const { data } = this.props.loginForm;
         let name;
         let avatarUrl;
         if (!_.isEmpty(data)) {
             name = data.result.firstName + " " + data.result.lastName;
-            console.log("fireststr",name)
             avatarUrl = data.avatarUrl ? data.avatarUrl : userPhoto;     
         } else { 
             name = localStorage.getItem('username')
@@ -73,6 +71,6 @@ class Profile extends Component {
     }
 }
 const mapStatetoProps = (state) => {
-    return { loginReducer: state.loginReducer }
+    return { loginForm: state.login }
 }
 export default connect(mapStatetoProps, null)(withRouter(Profile));

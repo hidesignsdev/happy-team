@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-// import { Link } from 'react-router-dom'
 import { Field, reduxForm } from 'redux-form'
 import { connect } from 'react-redux'
 import { signUp } from './actions'
@@ -9,9 +8,8 @@ import user from '../../assets/user.png'
 import { validate } from '../../common/ValidationForm'
 
 class Signup extends Component {
-
     state = {
-        isPasswordShown: false
+        isPasswordShown: false,
     }
     togglePasswordVisibility = () => {
         const { isPasswordShown } = this.state;
@@ -19,15 +17,14 @@ class Signup extends Component {
     }
     submit = values => {
         this.props.signUp(values)
-        // console.log(values)
     }
     render() {
-        const { success } = this.props.signupReducer;
-        if (success) {
-            this.props.history.push("/signup-final")
-        }
         const { isPasswordShown } = this.state
         const { handleSubmit } = this.props
+        const { loading, success ,error} = this.props.signupForm;
+        if (success === true) {
+            this.props.history.push("/signup-final")
+        }
         return (
             <div className=" center">
                 <img src={user} alt="userimg" />
@@ -81,8 +78,15 @@ class Signup extends Component {
                             className="form-control" />
                     </div>
                     <div className="btn-signup">
-                        <button type="submit">Sign Up</button>
+                        {loading ? <button className="btn btn-primary" disabled>
+                                  <span className="spinner-grow spinner-grow-sm"></span>
+                                  Loading..
+                                   </button>
+                            :
+                                  <button type="submit" className="btn btn-primary">Sign Up</button>
+                        }
                     </div>
+                    {error?(<span className="alert-danger"><i class="fas fa-exclamation-triangle"></i>{error}</span>) : null}
                     <div className="link-to-login">
                         <p  >Already have account?<a href="/">log in</a></p>
                     </div>
@@ -91,14 +95,13 @@ class Signup extends Component {
         )
     }
 }
-
 Signup = reduxForm({
     form: 'signup',
     validate
 })(Signup)
-const mapStateToProps = (state) => {
+const mapStateToProps = (state, ownProps) => {
     return {
-        signupReducer: state.signupReducer
+        signupForm: state.signup
     }
 }
 const mapDispatchToProps = (dispatch) => {

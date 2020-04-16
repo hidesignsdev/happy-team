@@ -1,38 +1,35 @@
-import { SIGNUP, SIGNUP_SUCCESS, SIGNUP_FAILURE } from './constants'
+import { SIGN_UP_REQUEST, SIGN_UP_SUCCESS, SIGN_UP_FAILURE } from './constants'
 
 const initialState = {
-    requesting: false,
+    data: {},
     success: false,
-    errors: [],
-    messages: []
+    errors: "",
+    loading: false
 }
-
 function signupReducer(state = initialState, action) {
     switch (action.type) {
-        case SIGNUP:
+
+        case SIGN_UP_REQUEST:
             return {
-                requesting: true,
-                success: false,
-                errors: [],
-                messages: [{ body: 'Signing up...', time: new Date() }]
+                ...state,
+                data: {},
+                loading: true
             }
-        case SIGNUP_SUCCESS:
+        case SIGN_UP_SUCCESS:
             return {
-                requesting: false,
+                ...state,
+                data: action.payload.data,
                 success: true,
-                errors: [],
-                messages: [{ body: "Signed up successfull for your email", time: new Date() }]
+                loading: false
             }
-        case SIGNUP_FAILURE:
+        case SIGN_UP_FAILURE:
             return {
-                requesting: false,
-                success: false,
-                errors: [],
-                messages: [{ body: "Sign up fail...", time: new Date() }]
+                ...state,
+                loading: false,
+                error: action.payload.error
             }
         default:
             return state
     }
 }
-
 export default signupReducer

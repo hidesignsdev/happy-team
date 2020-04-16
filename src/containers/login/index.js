@@ -9,12 +9,10 @@ import { validate } from '../../common/ValidationForm'
 
 class Login extends Component {
     submit = values => {
-        this.props.logIn(values)
-        console.log(values)
-        
+        this.props.logIn(values) 
     }
     render() {
-        const { success } = this.props.loginReducer
+        const { success } = this.props.loginForm
         if (success === true) {
             this.props.history.push("/profile")
         }
@@ -59,7 +57,7 @@ Login = reduxForm({
 })(Login)
 const mapStateToProps = (state) => {
     return {
-        loginReducer: state.loginReducer
+        loginForm: state.login
     }
 }
 const mapDispatchToProps = (dispatch) => {
