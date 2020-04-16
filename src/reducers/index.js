@@ -1,9 +1,10 @@
 import { combineReducers } from 'redux'
 import { reducer as form } from 'redux-form'
-import signup from '../containers/signup/reducer'
-
+import signupReducer from '../containers/signup/reducer'
+import loginReducer from '../containers/login/reducer'
 const rootReducer = combineReducers({
-    signup,
+    signupReducer,
+    loginReducer,
     form,
 })
 export default rootReducer

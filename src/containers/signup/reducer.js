@@ -1,4 +1,4 @@
-import { SIGNUP, SIGNUP_SUCCESS, } from './constants'
+import { SIGNUP, SIGNUP_SUCCESS, SIGNUP_FAILURE } from './constants'
 
 const initialState = {
     requesting: false,
@@ -22,6 +22,13 @@ function signupReducer(state = initialState, action) {
                 success: true,
                 errors: [],
                 messages: [{ body: "Signed up successfull for your email", time: new Date() }]
+            }
+        case SIGNUP_FAILURE:
+            return {
+                requesting: false,
+                success: false,
+                errors: [],
+                messages: [{ body: "Sign up fail...", time: new Date() }]
             }
         default:
             return state

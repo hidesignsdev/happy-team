@@ -1,19 +1,19 @@
 import axios from 'axios';
 import _ from 'lodash'; import {
     APP_ID, API_URL, REST_KEY
-} from './config'; 
+} from './config';
 const getAxiosInstance = () => {
-const token = localStorage.getItem('__a_token');
-const headers = {
+    const token = localStorage.getItem('__a_token');
+    const headers = {
         'X-Parse-Application-Id': APP_ID,
         'X-Parse-REST-API-Key': REST_KEY,
         ...(token ? { 'X-Parse-Session-Token': token } : {})
-    }; 
-const axiosInstance = axios.create({
+    };
+    const axiosInstance = axios.create({
         baseURL: API_URL,
         headers
-    }); 
-axiosInstance.interceptors.response.use((response) => {
+    });
+    axiosInstance.interceptors.response.use((response) => {
         if ([200, 201].includes(response.status)) {
             const result = response.data;
             if (_.isObject(result.isObject)) {

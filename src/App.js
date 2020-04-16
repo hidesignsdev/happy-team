@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 import './App.css';
-import LoginPage from './components/LoginPage'
+import Login from './containers/login'
 import Signup from './containers/signup'
 import PersonalPage from './components/PersonalPage'
-import ProfilePage from './components/ProfilePage'
+import Profile from './containers/profile'
 import CongratulationsPage from './components/CongratulationsPage'
 import { Router, Switch, Route } from "react-router-dom";
 import { createBrowserHistory } from 'history'
@@ -11,6 +11,7 @@ import { createBrowserHistory } from 'history'
 const history = createBrowserHistory()
 
 export default class App extends Component {
+  
   render() {
     return (
       <div >
@@ -18,7 +19,7 @@ export default class App extends Component {
           <div>
             <Switch>
               <Route exact path="/">
-                <LoginPage history={history} />
+                <Login history={history} />
               </Route>
               <Route path="/signup">
                 <Signup history={history} />
@@ -27,7 +28,7 @@ export default class App extends Component {
                 <PersonalPage history={history} />
               </Route>
               <Route path="/profile">
-                <ProfilePage history={history} />
+                <Profile history={history} />
               </Route>
               <Route path="/congratulations">
                 <CongratulationsPage history={history} />

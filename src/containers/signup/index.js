@@ -20,9 +20,12 @@ class Signup extends Component {
     submit = values => {
         this.props.signUp(values)
         // console.log(values)
-        this.props.history.push("/signup-final")
     }
     render() {
+        const { success } = this.props.signupReducer;
+        if (success) {
+            this.props.history.push("/signup-final")
+        }
         const { isPasswordShown } = this.state
         const { handleSubmit } = this.props
         return (
@@ -76,7 +79,6 @@ class Signup extends Component {
                             component={myInput}
                             placeholder="Re-enter your password"
                             className="form-control" />
-
                     </div>
                     <div className="btn-signup">
                         <button type="submit">Sign Up</button>
@@ -94,11 +96,14 @@ Signup = reduxForm({
     form: 'signup',
     validate
 })(Signup)
-
+const mapStateToProps = (state) => {
+    return {
+        signupReducer: state.signupReducer
+    }
+}
 const mapDispatchToProps = (dispatch) => {
     return {
         signUp: (values) => dispatch(signUp(values))
     }
 }
-
-export default connect(null, mapDispatchToProps)(withRouter(Signup));
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(Signup));
