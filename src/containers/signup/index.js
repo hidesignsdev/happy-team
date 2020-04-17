@@ -86,7 +86,7 @@ class Signup extends Component {
                                   <button type="submit" className="btn btn-primary">Sign Up</button>
                         }
                     </div>
-                    {error?(<span className="alert-danger"><i class="fas fa-exclamation-triangle"></i>{error}</span>) : null}
+                    {error?(<span className="alert-danger"><i className="fas fa-exclamation-triangle"></i>{error}</span>) : null}
                     <div className="link-to-login">
                         <p  >Already have account?<a href="/">log in</a></p>
                     </div>

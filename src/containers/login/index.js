@@ -9,10 +9,10 @@ import { validate } from '../../common/ValidationForm'
 
 class Login extends Component {
     submit = values => {
-        this.props.logIn(values) 
+        this.props.logIn(values)
     }
     render() {
-        const { success } = this.props.loginForm
+        const { success, requesting ,error} = this.props.loginForm
         if (success === true) {
             this.props.history.push("/profile")
         }
@@ -39,11 +39,18 @@ class Login extends Component {
                             component={myInput}
                             placeholder="Enter your password..." />
                     </div>
+                    {/* check error */}
+                    {error?(<span className="alert-danger"><i className="fas fa-exclamation-triangle"></i>{error}</span>) : null}
                     <label className="forgot-password">
                         <a href="/">Forgot your password?
                     </a></label>
-                    <button type="submit">Sign In</button>
+                    {/* Loading before login */}
+                    {requesting ? <button className="btn btn-primary" disabled>
+                        <span className="spinner-grow spinner-grow-sm"></span>
+                                  Loading..
+                                   </button> : <button type="submit">Sign In</button>}
                     <div className="link-to-signup">
+                        
                         <p  >Don't have account?<a href="/signup">Sign up</a></p>
                     </div>
                 </form>

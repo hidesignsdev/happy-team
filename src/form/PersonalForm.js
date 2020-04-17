@@ -14,9 +14,9 @@ const PersonalForm = (props) => {
                     <div  >
                         <Field className="field-input" name="gender" type="select" component="select" >
                             <option />
-                            <option value="male">Male</option>
-                            <option value="female">Female</option>
-                            <option value="other">Other</option>
+                            <option value="male">男性</option>
+                            <option value="female">女性</option>
+                            <option value="other">その他</option>
                         </Field>
                     </div>
                 </div>
