@@ -9,11 +9,12 @@ export const signUp = (data) => {
 export const signUpSuccess = (data) => {
     return {
         type: SIGN_UP_SUCCESS,
-            payload: data
+        payload: data
     }
 }
-export const signUpFailure = () => {
+export const signUpFailure = (error) => {
     return {
         type: SIGN_UP_FAILURE,
+        payload:  error 
     }
 }

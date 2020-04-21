@@ -1,8 +1,21 @@
-import { LOGIN_REQUESTING } from './constants'
+import { LOGIN_REQUESTING, LOGIN_SUCCESS, LOGIN_FAILURE } from './constants'
 
 export const logIn = (data) => {
     return {
         type: LOGIN_REQUESTING,
         payload: { data }
+    }
+}
+export const logInSucess = (data) => {
+    return {
+        type: LOGIN_SUCCESS,
+        payload: { data }
+    }
+}
+
+export const logInFailure = (error) => {
+    return {
+        type: LOGIN_FAILURE,
+        payload: error
     }
 }
