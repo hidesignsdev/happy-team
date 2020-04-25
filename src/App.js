@@ -2,8 +2,8 @@ import React, { Component } from 'react'
 import './App.css';
 import Login from './containers/login'
 import Signup from './containers/signup'
-import PersonalPage from './components/PersonalPage'
-import Profile from './containers/profile'
+import PersonalPage from './containers/profile'
+import Profile from './components/Profile'
 import CongratulationsPage from './components/CongratulationsPage'
 import { Router, Switch, Route } from "react-router-dom";
 import { createBrowserHistory } from 'history'
