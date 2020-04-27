@@ -12,7 +12,7 @@ class Login extends Component {
         this.props.logIn(values) 
     }
     render() {
-        const { success } = this.props.loginForm
+        const { success,error } = this.props.loginForm
         if (success === true) {
             this.props.history.push("/profile")
         }
@@ -39,6 +39,7 @@ class Login extends Component {
                             component={myInput}
                             placeholder="Enter your password..." />
                     </div>
+                    {error?(<span className="alert-danger"><i className="fas fa-exclamation-triangle"></i>{error}</span>) : null}
                     <label className="forgot-password">
                         <a href="/">Forgot your password?
                     </a></label>

@@ -12,7 +12,7 @@ function* loginFlow(action) {
         localStorage.setItem('token', data.result.sessionToken)
         localStorage.setItem('username', data.result.firstName + " " + data.result.lastName)
     } catch (error) {
-        yield put({ type: LOGIN_FAILURE, error: error.message })
+        yield put({ type: LOGIN_FAILURE, payload: error })
         console.log(error)
     }
 }

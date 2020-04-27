@@ -9,7 +9,8 @@ function* signupFlow(action) {
         const dataParam = pick(action.payload.data, ['firstName', 'lastName', 'email', 'password']);
         let response = yield call(request, url, dataParam, 'POST')
         yield put({ type: SIGN_UP_SUCCESS, payload: response.result })
-
+        localStorage.setItem('token', response.result.sessionToken)
+        localStorage.setItem('username', response.result.firstName + " " + response.result.lastName)
     } catch (error) {
         yield put({ type: SIGN_UP_FAILURE, payload: error })
     }

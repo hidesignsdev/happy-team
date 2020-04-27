@@ -1,9 +1,9 @@
 import { LOGIN_REQUESTING, LOGIN_SUCCESS, LOGIN_FAILURE } from './constants'
 
 const initialState = {
-    requesting: false,
+    loading: false,
     success: false,
-    errors: [],
+    error: "",
     data: {}
 }
 
@@ -12,23 +12,21 @@ function loginReducer(state = initialState, action) {
         case LOGIN_REQUESTING:
             
             return {
-                requesting: true,
+                loading: true,
                 success: false,
-                errors: [],
                 data: {}
             }
         case LOGIN_SUCCESS:
             return {
-                requesting: false,
+                loading: false,
                 success: true,
-                errors: [],
                 data: action.payload.data
             }
         case LOGIN_FAILURE:
             return {
-                requesting: false,
+                loading: false,
                 success: false,
-                errors: [],
+                error: action.payload.error
                 
             }
         default:

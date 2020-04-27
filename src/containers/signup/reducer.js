@@ -3,7 +3,7 @@ import { SIGN_UP_REQUEST, SIGN_UP_SUCCESS, SIGN_UP_FAILURE } from './constants'
 const initialState = {
     data: {},
     success: false,
-    errors: "",
+    error: "",
     loading: false
 }
 function signupReducer(state = initialState, action) {
