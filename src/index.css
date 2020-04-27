@@ -1,0 +1,169 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans",
+    "Droid Sans", "Helvetica Neue", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+}
+
+.field {
+  margin: 10px 0;
+  height: 60px;
+}
+.field span {
+  color: red;
+  font-size: 14px;
+}
+.field label {
+  margin-bottom: 0px;
+}
+.center {
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+  padding: 60px 0;
+  margin: 20px auto;
+  width: 60%;
+  width: 400px;
+}
+
+.center .yourname {
+  text-align: center;
+}
+.center input {
+  width: 100%;
+  height: 30px;
+  padding-left: 5px;
+  border-radius: 2px;
+  border: 2px solid black;
+  margin-top: 5px;
+}
+
+.center button {
+  width: 100%;
+  background-color: rgb(55, 112, 219);
+  border: 1px solid rgb(55, 112, 219);
+  border-radius: 2px;
+  /* margin-top: 10px; */
+  padding: 5px 0;
+  color: white;
+  font-weight: bold;
+}
+.bottom {
+  text-align: center;
+  margin: 10px auto;
+  bottom: 0;
+}
+.btn-signup {
+  margin-top: 20px;
+}
+.forgot-password {
+  margin-top: 10px;
+  float: right;
+  color: blue;
+}
+.center img {
+  border-radius: 50%;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100px;
+  height: 100px;
+  display: block;
+}
+.field-input {
+  width: 100%;
+  height: 30px;
+  padding-left: 5px;
+  border-radius: 2px;
+  background-color: white;
+  border: 2px solid black;
+}
+.btn-next {
+  margin-top: 150px;
+}
+
+.view-changepass-profile {
+  width: 100%;
+  border-bottom: black 1px solid;
+  padding: 5px;
+}
+.logout {
+  padding: 5px;
+}
+
+.right-arrow {
+  float: right;
+}
+.password-icon {
+  position: absolute;
+  top: 35px;
+  right: 10px;
+}
+.div-hidden-password {
+  position: relative;
+}
+img {
+  align-self: center;
+  background: grey;
+  width: 100px;
+  height: 100px;
+}
+.header {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
+}
+.image-wrapper {
+  position: relative;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  width: 100%;
+}
+.image-wrapper.user-avatar {
+  background: grey;
+  max-width: 150px;
+  max-height: 150px;
+  border-radius: 50%;
+}
+
+.imgPreview {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+
+  text-align: center;
+  background-color: #ccc;
+}
+.imgPreview > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.image-wrapper .input-icon {
+  position: absolute;
+  right: 50px;
+  bottom: 0px;
+  font-size: 40px;
+  cursor: pointer;
+}
+
+.sign-out {
+  color: red;
+}
