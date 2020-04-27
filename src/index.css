@@ -11,7 +11,7 @@ code {
 }
 
 .field {
-  margin: 10px 0;
+  margin: 20px 0;
   height: 60px;
 }
 .field span {
@@ -166,4 +166,8 @@ img {
 
 .sign-out {
   color: red;
+}
+.errorMessage{
+  color:red;
+  font-size: 13px;
 }

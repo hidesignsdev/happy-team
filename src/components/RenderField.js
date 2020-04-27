@@ -1,15 +1,13 @@
 import React from 'react';
 
-export const myInput = props => {
-    const { meta: {touched, error}} = props
+export const myInput = ({field,...props}) => {
     return (
         <div>
-            <input 
-            {...props.input} 
+            <input {...field}
+            // {...props.input} 
              type={props.type} 
              placeholder={props.placeholder} 
-             />
-          {touched && (error && <span>{error}</span>)}       
+             />   
         </div>
     );
 };
