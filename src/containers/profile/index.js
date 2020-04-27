@@ -1,76 +1,93 @@
-import React, { Component } from 'react'
-import { connect } from 'react-redux'
-import { withRouter } from 'react-router-dom'
-import userPhoto from '../../assets/userPhoto.png'
-import _ from "lodash";
+import React, { Component } from "react";
+import { Field, reduxForm } from "redux-form";
+import { connect } from "react-redux";
+import { withRouter } from "react-router-dom";
+import { myInput } from "../../components/RenderField";
 
+import { required } from "../../common/ValidationForm";
+import { updateProfileRequest } from "./action";
+import ImageUpload from "../../components/ImageUpload";
+class PersonalPage extends Component {
+  submit = (values) => {
+    this.props.updateProfile(values);
 
+    console.log(values);
+  };
+  render() {
+    const { handleSubmit } = this.props;
+    const { success, error, loading } = this.props.updateInfo;
 
-class Profile extends Component {
-
-    signout = () => {
-        localStorage.removeItem('token')
-        localStorage.removeItem('username')
+    if (success === true) {
+      this.props.history.push("/congratulations");
     }
-    render() {
-        const { data } = this.props.loginForm;
-        let name;
-        let avatarUrl;
-        if (!_.isEmpty(data)) {
-            name = data.result.firstName + " " + data.result.lastName;
-            avatarUrl = data.avatarUrl ? data.avatarUrl : userPhoto;     
-        } else { 
-            name = localStorage.getItem('username')
-            avatarUrl = userPhoto;
-        }
-        return (
-            <div>
-                <div className=" center">
 
-                    <img src={avatarUrl} alt="userPhoto" />
-                    <h3 className="yourname" >{name}</h3>
-                    <div className="profile">
-                        <div className="view-changepass-profile">
-                            <span>View profile</span>
-                            <i className="fas fa-angle-right right-arrow"></i>
-                        </div>
-                        <div className="view-changepass-profile">
-                            <span>Change Password</span>
-                            <i className="fas fa-angle-right right-arrow"></i>
-                        </div>
-                        <div className="logout">
-                            <span><a href="/" onClick={this.signout}>Sign Out</a></span>
-                        </div>
-                    </div>
+    return (
+      <div className=" center">
+        <form onSubmit={handleSubmit(this.submit)}>
+          <div className="header">
+            <h3>Personal Information</h3>
+            <Field name="file" component={ImageUpload} />
+          </div>
+          <label>Gender</label>
+          <div>
+            <Field
+              className="field-input"
+              name="gender"
+              type="select"
+              component="select"
+            >
+              <option />
+              <option value="男性">男性</option>
+              <option value="女性">女性</option>
+              <option value="その他">その他</option>
+            </Field>
+          </div>
 
-                </div>
-                {/* Footer */}
-                <div className="footer">
-                    <footer className="page-footer font-small indigo">
-                        <div className=" text-center text-md-left">
-                            <div className="row ">
-                                <div className="col-3 ">
-                                    <h5 className="mt-3 mb-4"><i className="fas fa-home"></i></h5>
-                                </div>
-                                <div className="col-3 ">
-                                    <h5 className=" mt-3 mb-4"><i className="fas fa-user-plus"></i></h5>
-                                </div>
-                                <div className="col-3 ">
-                                    <h5 className="  mt-3 mb-4"><i className="fas fa-bell"></i></h5>
-                                </div>
-                                <div className="col-3 ">
-                                    <h5 className=" mt-3 mb-4"><i className="fas fa-user-circle"></i></h5>
-                                </div>
-                            </div>
-                        </div>
-                    </footer>
-                    {/* Footer */}
-                </div>
-            </div>
-        )
-    }
+          <div className="field">
+            <label>Birthday</label>
+            <Field
+              name="dateOfBirth"
+              type="date"
+              component={myInput}
+              validate={required}
+            />
+          </div>
+          {loading ? (
+            <button className="btn btn-primary" disabled>
+              <span className="spinner-grow spinner-grow-sm"></span>
+              Loading..
+            </button>
+          ) : (
+            <button type="submit" className="btn btn-primary btn-next">
+              Next
+            </button>
+          )}
+          {error ? (
+            <span className="alert-danger">
+              <i className="fas fa-exclamation-triangle"></i>
+              {error}
+            </span>
+          ) : null}
+        </form>
+      </div>
+    );
+  }
 }
-const mapStatetoProps = (state) => {
-    return { loginForm: state.login }
-}
-export default connect(mapStatetoProps, null)(withRouter(Profile));
+PersonalPage = reduxForm({
+  form: "signup-final",
+})(PersonalPage);
+
+const mapStateToProps = (state) => {
+  return {
+    updateInfo: state.updateProfile,
+  };
+};
+const mapDispatchToProps = (dispatch) => {
+  return {
+    updateProfile: (values) => dispatch(updateProfileRequest(values)),
+  };
+};
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(withRouter(PersonalPage));

@@ -36,39 +36,6 @@
     transform: rotate(360deg);
   }
 }
-.userPhoto{
-  margin: 40px auto;
-   width: 50%;
-   height: 50%;
- }
+
  
- .container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  position: relative;
-
-}
-form{
-  display: flex;
-  flex: 1;
-  flex-direction: column;
-
-
-}
-/* .profile{
-  display: flex;
-  justify-content:space-between;
-  border-bottom: 1px solid black;
-  padding-bottom: 3px;
-} */
-.sign-out{
-  color:red;
-}
-.footer{
-  position: fixed; 
-  bottom: 0;
-
-}
 

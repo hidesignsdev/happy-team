@@ -18,7 +18,7 @@ function signupReducer(state = initialState, action) {
         case SIGN_UP_SUCCESS:
             return {
                 ...state,
-                data: action.payload.data,
+                data: action.payload,
                 success: true,
                 loading: false
             }

@@ -22,15 +22,13 @@ code {
   margin-bottom: 0px;
 }
 .center {
-  margin: 20px auto;
-  margin-bottom: 0px;
-  width: 80%;
-  padding: 10px;
-  border-radius: 5px;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+  padding-top: 60px;
+  padding: 60px 20px 0 20px;
 }
-.center img {
-  border-radius: 50%;
-}
+
 .center .yourname {
   text-align: center;
 }
@@ -42,6 +40,7 @@ code {
   border: 2px solid black;
   margin-top: 5px;
 }
+
 .center button {
   width: 100%;
   background-color: rgb(55, 112, 219);
@@ -52,14 +51,7 @@ code {
   color: white;
   font-weight: bold;
 }
-.link-to-signup {
-  position: fixed;
-  text-align: center;
-  width: 80%;
-  margin-bottom: 10px;
-  bottom: 0;
-}
-.link-to-login {
+.bottom {
   text-align: center;
   margin: 10px auto;
   bottom: 0;
@@ -73,10 +65,12 @@ code {
   color: blue;
 }
 .center img {
-  display: block;
+  border-radius: 50%;
   margin-left: auto;
   margin-right: auto;
-  width: 40%;
+  width: 100px;
+  height: 100px;
+  display: block;
 }
 .field-input {
   width: 100%;
@@ -89,9 +83,7 @@ code {
 .btn-next {
   margin-top: 150px;
 }
-.profile {
-  margin-top: 50px;
-}
+
 .view-changepass-profile {
   width: 100%;
   border-bottom: black 1px solid;
@@ -100,21 +92,76 @@ code {
 .logout {
   padding: 5px;
 }
-.footer {
-  /* background-color: red; */
-  width: 100%;
-  position: fixed;
-  bottom: 0;
-  border: 2px solid black;
-}
+
 .right-arrow {
   float: right;
 }
 .password-icon {
   position: absolute;
-  top: 45px;
+  top: 35px;
   right: 10px;
 }
-.div-hidden-password{
+.div-hidden-password {
   position: relative;
+}
+img {
+  align-self: center;
+  background: grey;
+  width: 100px;
+  height: 100px;
+}
+.header {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
+}
+.image-wrapper {
+  position: relative;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  width: 100%;
+}
+.image-wrapper.user-avatar {
+  background: grey;
+  max-width: 150px;
+  max-height: 150px;
+  border-radius: 50%;
+}
+
+.imgPreview {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+
+  text-align: center;
+  background-color: #ccc;
+}
+.imgPreview > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.image-wrapper .input-icon {
+  position: absolute;
+  right: 50px;
+  bottom: 0px;
+  font-size: 40px;
+  cursor: pointer;
+}
+
+.sign-out {
+  color: red;
 }

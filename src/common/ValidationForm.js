@@ -28,3 +28,4 @@ export const validate = values => {
     }
     return errors
 }
+export const required = value => value ? '' : 'Required'

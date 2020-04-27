@@ -1,37 +1,42 @@
-import { LOGIN_REQUESTING, LOGIN_SUCCESS, LOGIN_FAILURE } from './constants'
+import { LOGIN_REQUESTING, LOGIN_SUCCESS, LOGIN_FAILURE, LOGOUT } from "./constants";
 
 const initialState = {
-    loading: false,
+    requesting: false,
     success: false,
     error: "",
-    data: {}
-}
+    data: {},
+};
 
 function loginReducer(state = initialState, action) {
     switch (action.type) {
         case LOGIN_REQUESTING:
-            
             return {
-                loading: true,
+                requesting: true,
                 success: false,
-                data: {}
-            }
+                data: {},
+            };
         case LOGIN_SUCCESS:
             return {
-                loading: false,
+                requesting: false,
                 success: true,
-                data: action.payload.data
-            }
+                data: action.payload
+            };
         case LOGIN_FAILURE:
             return {
-                loading: false,
+                requesting: false,
                 success: false,
                 error: action.payload.error
-                
+            };
+        case LOGOUT:
+            return {
+                requesting: false,
+                success: false,
+                error: "",
+                data: {},
             }
         default:
-            return state
+            return state;
     }
 }
 
-export default loginReducer
+export default loginReducer;
