@@ -1,11 +1,11 @@
 import React, { Component } from "react";
-// import { Field, reduxForm } from "redux-form";
+
 import { connect } from "react-redux";
 import { signUp } from "./actions";
 import { withRouter } from "react-router-dom";
 import { myInput } from "../../components/RenderField";
 import user from "../../assets/user.png";
-// import { validate } from "../../common/ValidationForm";
+
 import { Formik, Form, Field, ErrorMessage } from "formik"
 import * as Yup from "yup"
 

@@ -20,14 +20,14 @@ function* callUpdateProfile(action) {
       formdata,
       "POST"
     );
- 
+
     let dataUpdate = yield call(
       request,
       "functions/updateProfileTesting",
       { gender, dateOfBirth, avatarId: imageResults.objectId },
       "POST"
     );
-  
+
     yield put(updateProfileSuccess(dataUpdate.result));
   } catch (error) {
     console.log("error", error);

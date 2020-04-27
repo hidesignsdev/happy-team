@@ -1,13 +1,15 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans",
-    "Droid Sans", "Helvetica Neue", sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
 }
 
 .field {
@@ -158,7 +160,7 @@ img {
 
 .image-wrapper .input-icon {
   position: absolute;
-  right: 50px;
+  right: 110px;
   bottom: 0px;
   font-size: 40px;
   cursor: pointer;
@@ -167,7 +169,7 @@ img {
 .sign-out {
   color: red;
 }
-.errorMessage{
-  color:red;
+.errorMessage {
+  color: red;
   font-size: 13px;
 }

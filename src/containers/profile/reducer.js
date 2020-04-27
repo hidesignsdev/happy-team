@@ -30,7 +30,7 @@ const updateProfileReducer = (state = initialState, action) => {
         ...state,
         data: {},
         error: action.payload.error,
-        loading: false
+        loading: false,
       };
     default:
       return state;

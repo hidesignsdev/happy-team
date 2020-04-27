@@ -8,10 +8,8 @@ class ImageUpload extends Component {
     };
   }
   handleImgChange = (e) => {
-    const {
-      input: { onChange },
-    } = this.props;
-
+    const { form: { setFieldValue } } = this.props
+    
     let reader = new FileReader();
     let file = e.target.files[0];
 
@@ -22,7 +20,7 @@ class ImageUpload extends Component {
     };
     if (file) {
       reader.readAsDataURL(file);
-      onChange(file);
+      setFieldValue("file",file)
     }
   };
   render() {
@@ -41,7 +39,7 @@ class ImageUpload extends Component {
         <input
           style={{ display: "none" }}
           ref={(component) => (this.input = component)}
-          name={this.props.input.name}
+          name={this.props.field.name}
           type="file"
           accept="image/*"
           onChange={this.handleImgChange}
