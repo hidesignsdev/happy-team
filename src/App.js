@@ -5,88 +5,92 @@ import Session from "./components/Session";
 import TimeLeft from "./components/TimeLeft";
 import BeePSound from "./sounds/BeepSound.mp3";
 
+const SESSION = "SESSION"
+const BREAK = "Break now!"
+
 function App() {
   const audioElement = useRef(null);
-  const [currentSessionType, setCurrentSessionType] = useState("Session"); // 'Session' or 'Break'
-  const [intervalId, setIntervalId] = useState(null);
-  const [sessionLength, setSessionLength] = useState(60 * 25);
-  const [breakLength, setBreakLength] = useState(300);
-  const [timeLeft, setTimeLeft] = useState(sessionLength);
-
-  // change timeLeft whenever sessionLength changes
-  useEffect(() => {
-    setTimeLeft(sessionLength);
-  }, [sessionLength]);
-
+  const [currentSessionType, setCurrentSessionType] = useState(SESSION); // 'Session' or 'Break'
+  const [timerRunning, setTimerRunning] = useState(false);
+  const [sessionLength, setSessionLength] = useState(25);
+  const [breakLength, setBreakLength] = useState(5);
+  const [timeLeft, setTimeLeft] = useState(60 * 25);
+  const [buttonLabel, setButtonLabel] = useState('Start');
   const decrementBreakLengthByOneMinute = () => {
-    const newBreakLength = breakLength - 60;
-
-    if (newBreakLength < 0) {
-      setBreakLength(0);
-    } else {
-      setBreakLength(newBreakLength);
+    if (breakLength > 1) {
+      setBreakLength(breakLength - 1);
     }
   };
 
   const incrementBreakLengthByOneMinute = () => {
-    setBreakLength(breakLength + 60);
+    if (breakLength < 60) {
+      setBreakLength(breakLength + 1);
+    }
   };
 
   const decrementSessionLengthByOneMinute = () => {
-    const newSessionLength = sessionLength - 60;
-
-    if (newSessionLength < 0) {
-      setSessionLength(0);
-    } else {
-      setSessionLength(newSessionLength);
+    if (!timerRunning && sessionLength > 1) {
+      setSessionLength(sessionLength - 1);
+      setTimeLeft(timeLeft - 60)
     }
   };
 
   const incrementSessionLengthByOneMinute = () => {
-    setSessionLength(sessionLength + 60);
-  };
-
-  const isStarted = intervalId !== null;
-  const handleStartStopClick = () => {
-    if (isStarted) {
-      clearInterval(intervalId);
-      setIntervalId(null);
-    } else {
-      const newIntervalId = setInterval(() => {
-        setTimeLeft((prevTimeLeft) => {
-          const newTimeLeft = prevTimeLeft - 1;
-          if (newTimeLeft >= 0) {
-            return prevTimeLeft - 1;
-          }
-
-          audioElement.current.play();
-
-          if (currentSessionType === "Session") {
-            // switch to break
-            setCurrentSessionType("Break");
-            // setTimeLeft to breakLength
-            setTimeLeft(breakLength);
-          } else if (currentSessionType === "Break") {
-            // switch to session
-            setCurrentSessionType("Session");
-            // setTimeLeft to sessionLength
-            setTimeLeft(sessionLength);
-          }
-        });
-      }, 100); // TODO: turn back into 1000
-      setIntervalId(newIntervalId);
+    if (!timerRunning && sessionLength < 60) {
+      setSessionLength(sessionLength + 1);
+      setTimeLeft(timeLeft + 60)
     }
   };
+  useEffect(() => {
+    const handleSwitch = () => {
+      if (currentSessionType === SESSION) {
+        setCurrentSessionType(BREAK);
+        setTimeLeft(breakLength * 60);
+        audioElement.current.play();
+      } else if (currentSessionType === BREAK) {
+        // switch to session
+        setCurrentSessionType(SESSION);
+        // setTimeLeft to sessionLength
+        setTimeLeft(sessionLength * 60);
+      }
+    }
+    let countdown = null;
+    if (timerRunning && timeLeft > 0) {
+      countdown = setInterval(() => {
+        setTimeLeft(timeLeft - 1);
+      }, 1000);
+    } else if (timerRunning && timeLeft === 0) {
+      countdown = setInterval(() => {
+        setTimeLeft(timeLeft - 1);
+      }, 1000);
+      handleSwitch();
+    } else {
+      clearInterval(countdown);
+    }
+    return () => clearInterval(countdown);
+  },
+    [timerRunning, timeLeft, currentSessionType, breakLength, sessionLength]
+  );
 
+  const handleStart = () => {
+    // AudioContext.resume();
+    setTimerRunning(true);
+    setButtonLabel('Stop');
+  }
+  const handlePause = () => {
+    setTimerRunning(false);
+    setButtonLabel('Start');
+  }
   const handleResetButtonClick = () => {
     // reset audio
-    audioElement.current.load();
+    audioElement.current.pause();
+    audioElement.current.currentTime = 0
     // clear the timeout interval
-    clearInterval(intervalId);
-    setIntervalId(null);
-    setCurrentSessionType("Session");
-    setSessionLength(60 * 25);
-    setBreakLength(60 * 5);
+    setTimerRunning(false);
+    setButtonLabel('Start');
+    setCurrentSessionType(SESSION);
+    setSessionLength(25);
+    setBreakLength(5);
     setTimeLeft(60 * 25);
   };
 
@@ -95,15 +99,12 @@ function App() {
       <header>
         <h1>Pomodoro Clock</h1>
       </header>
-
       <main>
         <div className="time-wrapper">
-          <h2 id="session-label">Session</h2>
+          <h2 id="timer-label">{currentSessionType}</h2>
           <TimeLeft
-            handleStartStopClick={handleStartStopClick}
-            timerLabel={currentSessionType}
-            startStopButtonLabel={isStarted ? "Stop" : "Start"}
-            start
+            handleStartStopClick={timerRunning ? handlePause : handleStart}
+            buttonLabel={buttonLabel}
             timeLeft={timeLeft}
             handleResetButtonClick={handleResetButtonClick}
           />
@@ -111,12 +112,8 @@ function App() {
         <div className="timeset-wrapper">
           <Session
             sessionLength={sessionLength}
-            decrementSessionLengthByOneMinute={
-              decrementSessionLengthByOneMinute
-            }
-            incrementSessionLengthByOneMinute={
-              incrementSessionLengthByOneMinute
-            }
+            decrementSessionLengthByOneMinute={decrementSessionLengthByOneMinute}
+            incrementSessionLengthByOneMinute={incrementSessionLengthByOneMinute}
           />
           <Break
             breakLength={breakLength}
@@ -125,7 +122,6 @@ function App() {
           />
         </div>
       </main>
-
       <audio id="beep" ref={audioElement}>
         <source src={BeePSound} type="audio/mpeg" />
       </audio>

@@ -1,4 +1,4 @@
-import moment from "moment";
+// import moment from "moment";
 import React from "react";
 
 const Break = ({
@@ -6,11 +6,11 @@ const Break = ({
   decrementBreakLengthByOneMinute,
   incrementBreakLengthByOneMinute,
 }) => {
-  const breakLengthInMinutes = moment.duration(breakLength, "s").minutes();
+  // const breakLengthInMinutes = moment.duration(breakLength, "s").minutes();
   return (
     <div>
       <h2 id="break-label">Break</h2>
-      <h3 id="break-length">{breakLengthInMinutes}</h3>
+      <h3 id="break-length">{breakLength}</h3>
       <button id="break-decrement" onClick={decrementBreakLengthByOneMinute}>
         -
       </button>

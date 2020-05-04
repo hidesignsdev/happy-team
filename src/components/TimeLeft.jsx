@@ -4,14 +4,14 @@ import React from 'react';
 
 momentDurationFormatSetup(moment);
 
-const TimeLeft = ({ handleStartStopClick, startStopButtonLabel, timeLeft, handleResetButtonClick }) => {
+const TimeLeft = ({ handleStartStopClick, buttonLabel, timeLeft, handleResetButtonClick }) => {
   const formattedTimeLeft = moment.duration(timeLeft, 's').format('mm:ss', { trim: false });
   return (
     <div>
       <h3 id="time-left">{formattedTimeLeft}</h3>
       <div className="controls-wrapper">
       <button id="start_stop" onClick={handleStartStopClick}>
-        {startStopButtonLabel}
+        {buttonLabel}
       </button>
       <button id="reset" onClick={handleResetButtonClick}>
         Reset
